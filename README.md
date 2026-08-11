@@ -6,10 +6,8 @@
 **College:** Sahyadri College of Engineering and Management  
 **Branch:** Electronics and Communication Engineering
 
-### LinkedIn
-
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](YOUR_LINKEDIN_LINK)
-
+### Linked in
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/s-vidisha-4b1144293?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)
 ---
 
 ## Project Overview
