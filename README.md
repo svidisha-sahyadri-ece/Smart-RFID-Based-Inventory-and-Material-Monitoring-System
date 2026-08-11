@@ -1,49 +1,85 @@
-# Smart RFID-Based Inventory & Material Monitoring System
+# Smart Inventory & Shelf Management System
 
-A smart inventory monitoring prototype developed during a **24-hour hackathon** by a **4-member team** to reduce manual stock checking and improve real-time visibility of products and materials.
+## About Me
 
-The system combines embedded sensing, RFID identification, computer vision, cloud connectivity, and automated alerts to monitor inventory and support timely replenishment decisions.
+**Name:** S VIDISHA  
+**College:** Sahyadri College of Engineering and Management  
+**Branch:** Electronics and Communication Engineering
 
-## Problem
+### LinkedIn
 
-Manual inventory checking can be time-consuming and may lead to inaccurate stock information or delayed identification of low-stock conditions.
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](YOUR_LINKEDIN_LINK)
 
-## Solution
+---
 
-The system automates product identification and inventory monitoring using multiple sensing approaches:
+## Project Overview
 
-- RFID-based product identification
-- Weight-based quantity measurement using a load cell and HX711
-- Camera-based shelf monitoring using YOLOv8
-- ESP32-based embedded control and data processing
-- OLED display for local inventory status
-- Firebase connectivity for cloud-based inventory data
-- Email alerts for low-stock conditions
-- MicroSD-based offline data storage concept
-- API-based automated restocking concept
+The **Smart Inventory & Shelf Management System** is a hackathon prototype developed to explore automated, real-time inventory monitoring using embedded systems and IoT technologies.
+
+The system uses an **ESP32** as the primary embedded controller. An **MFRC522 RFID reader** identifies tagged products, while the system maintains item-wise inventory counts and displays the current stock status on an **OLED display**. The ESP32 connects to Wi-Fi and can automatically send an **email notification when the stock level of a tracked item falls below a predefined threshold**.
+
+The overall project concept was designed to be extended with **weight-based quantity verification, centralized processing using Raspberry Pi, cloud-based inventory monitoring, and camera-based product identification**.
+
+---
+
+## Problem Statement
+
+Traditional inventory monitoring often relies on manual stock counting, which can result in delayed updates, inaccurate stock information, and difficulty identifying low-stock items.
+
+The objective of this project was to develop a prototype for an **automated shelf-monitoring system** that can identify products, maintain inventory information, provide local status feedback, and generate alerts when stock levels become low.
+
+---
+
+## Features
+
+### Implemented in the Prototype
+
+- RFID-based product identification using MFRC522
+- ESP32-based inventory processing
+- Individual product identification using RFID UID
+- Automatic inventory count update
+- OLED-based local inventory display
+- Wi-Fi connectivity
+- Configurable low-stock threshold
+- Automatic email notification for low-stock conditions
+- Serial monitoring for debugging and system status
+
+### Explored / Proposed Extensions
+
+- Weight-based quantity verification using load cells and HX711
+- Centralized inventory processing using Raspberry Pi
+- Cloud-based inventory database
+- Web-based inventory dashboard
+- Camera-based product detection using computer vision
+- Automated shelf-level product tracking
+
+> **Note:** The above extensions represent the broader hackathon system concept. They were not all integrated into the final ESP32 prototype shown in this repository.
+
+---
 
 ## System Workflow
 
 ```text
-              Products / Shelf
-                     |
-        +------------+-------------+
-        |            |             |
-       RFID        Weight        Camera
-        |            |             |
-      RC522        HX711         YOLOv8
-        |            |             |
-        +------------+-------------+
-                     |
-              Inventory Logic
-                     |
-          +----------+----------+
-          |                     |
-      Normal Stock          Low Stock
-          |                     |
-     Update Status          Alert User
-                                |
-                    +-----------+-----------+
-                    |           |           |
-                  Email      Firebase    Restocking
-                                           API
+             ┌──────────────────┐
+             │   RFID Product   │
+             │      Tag         │
+             └────────┬─────────┘
+                      │
+                      ▼
+             ┌──────────────────┐
+             │   MFRC522 RFID   │
+             │      Reader      │
+             └────────┬─────────┘
+                      │
+                      ▼
+             ┌──────────────────┐
+             │      ESP32       │
+             │ Inventory Logic  │
+             └───────┬───┬──────┘
+                     │   │
+             ┌───────┘   └──────────────┐
+             ▼                          ▼
+      ┌──────────────┐           ┌──────────────┐
+      │ OLED Display │           │ Wi-Fi / SMTP │
+      │ Stock Status │           │ Email Alert  │
+      └──────────────┘           └──────────────┘
